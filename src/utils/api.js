@@ -4,7 +4,7 @@ class Api {
     this._headers = headers;
   }
 
-  _apiResponse(res) {
+  _checkApiResponse(res) {
     if (res.ok) {
       return res.json();
     } else {
@@ -17,7 +17,7 @@ class Api {
       method: "PUT",
       headers: this._headers,
     }).then((res) => {
-      return this._apiResponse(res);
+      return this._checkApiResponse(res);
     });
   }
 
@@ -26,7 +26,7 @@ class Api {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => {
-      return this._apiResponse(res);
+      return this._checkApiResponse(res);
     });
   }
   //лайк
@@ -39,7 +39,7 @@ class Api {
         about: description,
       }),
     }).then((res) => {
-      return this._apiResponse(res);
+      return this._checkApiResponse(res);
     });
   }
 
@@ -51,7 +51,7 @@ class Api {
         avatar: avatarUrl.description,
       }),
     }).then((res) => {
-      return this._apiResponse(res);
+      return this._checkApiResponse(res);
     });
   }
   //методы с картами
@@ -61,7 +61,7 @@ class Api {
       headers: this._headers,
       body: JSON.stringify(cardData),
     }).then((res) => {
-      return this._apiResponse(res);
+      return this._checkApiResponse(res);
     });
   }
 
@@ -70,7 +70,7 @@ class Api {
       method: "DELETE",
       headers: this._headers,
     }).then((res) => {
-      return this._apiResponse(res);
+      return this._checkApiResponse(res);
     });
   }
 
@@ -84,7 +84,7 @@ class Api {
   getUserData() {
     return fetch(`${this._baseUrl}users/me`, { headers: this._headers }).then(
       (res) => {
-        return this._apiResponse(res);
+        return this._checkApiResponse(res);
       }
     );
   }

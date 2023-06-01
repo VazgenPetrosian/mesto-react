@@ -8,7 +8,7 @@ function Card(props) {
     props.onCardClick(props.card);
   }
   return (
-    <article key={props.card._id} className="card">
+    <article className="card">
       <button
         className="card__trashcan"
         type="button"

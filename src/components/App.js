@@ -33,7 +33,7 @@ function App() {
   }
   return (
     <div className="App">
-      <body className="pages">
+      <div className="pages">
         <Header />
         <Main
           onEditProfile={handleEditProfileClick}
@@ -51,11 +51,10 @@ function App() {
           buttonName={"Сохранить"}
         >
           <input
-            minlength="2"
-            maxlength="40"
+            minLength="2"
+            maxLength="40"
             required
             type="text"
-            value="Жак-Ив Кусто"
             className="popup__input popup__input_select_name"
             name="name"
             id="name-value"
@@ -63,11 +62,10 @@ function App() {
           />
           <span className="popup__input-error name-value-input-error"></span>
           <input
-            minlength="2"
-            maxlength="200"
+            minLength="2"
+            maxLength="200"
             required
             type="text"
-            value="Исследователь океана"
             className="popup__input popup__input_select_description"
             name="description"
             id="description-value"
@@ -83,8 +81,8 @@ function App() {
           buttonName={"Сохранить"}
         >
           <input
-            minlength="2"
-            maxlength="30"
+            minLength="2"
+            maxLength="30"
             required
             type="text"
             className="popup__input popup__input_select_place"
@@ -104,26 +102,6 @@ function App() {
           <span className="popup__input-error link-value-input-error"></span>
         </PopupWithForm>
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-        <div className="popup popup_type_deleteCard">
-          <div className="popup__container">
-            <button
-              className="popup__close popup__close_type_deleteCard"
-              type="button"
-            ></button>
-            <form
-              className="popup__form popup__form_type_deleteCard"
-              name="delete-form"
-            >
-              <h2 className="popup__heading">Вы уверены?</h2>
-              <button
-                className="popup__button popup__button_type_deleteCard"
-                type="submit"
-              >
-                Да
-              </button>
-            </form>
-          </div>
-        </div>
         <PopupWithForm
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
@@ -141,19 +119,7 @@ function App() {
           />
           <span className="popup__input-error avatar-value-input-error"></span>
         </PopupWithForm>
-        {/* <template className="template" id="templateID">
-          <article className="card">
-            <button className="card__trashcan" type="button"></button>
-            <img className="card__image" />
-            <div className="card__block">
-              <h2 className="card__heading"></h2>
-              <button className="card__like" type="button">
-                <p className="card__likes-number">0</p>
-              </button>
-            </div>
-          </article>
-        </template> */}
-      </body>
+      </div>
     </div>
   );
 }

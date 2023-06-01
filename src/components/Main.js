@@ -21,7 +21,7 @@ function Main(props) {
           `ошибка загрузки данных с апи: ${error} - ${error.statusText}`
         );
       });
-  }, [userName, userDescription, userAvatar]);
+  }, []);
 
   useEffect(() => {
     api
@@ -40,7 +40,7 @@ function Main(props) {
     <main className="main-page">
       <section className="profile">
         <button className="profile__avatar-button" onClick={props.onEditAvatar}>
-          <img className="profile__avatar" src={userAvatar} alt="Кусто" />
+          <img className="profile__avatar" src={userAvatar} alt={userName} />
         </button>
         <div className="profile__info">
           <button
@@ -59,7 +59,7 @@ function Main(props) {
       </section>
       <section className="cards">
         {cards.map((card) => (
-          <Card card={card} onCardClick={props.onCardClick} />
+          <Card key={card._id} card={card} onCardClick={props.onCardClick} />
         ))}
       </section>
     </main>

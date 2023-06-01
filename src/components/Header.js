@@ -4,7 +4,7 @@ import React from "react";
 function Header() {
   return (
     <header className="header">
-      <img classNamclassName="logo" src={logo} alt="Лого" />
+      <img className="logo" src={logo} alt="Лого" />
     </header>
   );
 }

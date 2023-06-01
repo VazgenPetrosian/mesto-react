@@ -1,7 +1,7 @@
 .popup__form {
   all: unset;
-  margin: 0 auto;
-  width: 358px;
+  /* margin: 0 auto; */
+  /* width: 358px; */
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
