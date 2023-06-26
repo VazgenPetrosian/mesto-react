@@ -1,8 +1,7 @@
 import React from "react";
 import { useState, useEffect, useContext, useRef } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import PopupWithForm from "./PopupWithForm";
-
+import PopupWithForm from "../components/PopupWithForm";
 function EditAvatarPopup(props) {
   const avatarRef = useRef("");
 

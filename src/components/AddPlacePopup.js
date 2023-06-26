@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
-import PopupWithForm from "./PopupWithForm";
-
+import PopupWithForm from "../components/PopupWithForm";
 function AddPlacePopup(props) {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
@@ -46,6 +45,7 @@ function AddPlacePopup(props) {
         id="name-add-value"
         placeholder="Название"
         onChange={handleChangeName}
+        value={name}
       />
       <span className="popup__input-error name-add-value-input-error"></span>
       <input
@@ -56,6 +56,7 @@ function AddPlacePopup(props) {
         name="description"
         id="link-value"
         onChange={handleChangeLink}
+        value={link}
       />
       <span className="popup__input-error link-value-input-error"></span>
     </PopupWithForm>
