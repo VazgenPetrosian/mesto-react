@@ -30,25 +30,25 @@ class Api {
     });
   }
   //лайк
-  editProfileInfo({ name, description }) {
+  editProfileInfo({ name, about }) {
     return fetch(`${this._baseUrl}users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name: name,
-        about: description,
+        name,
+        about,
       }),
     }).then((res) => {
       return this._checkApiResponse(res);
     });
   }
 
-  editUserAvatar(avatarUrl) {
+  editUserAvatar(data) {
     return fetch(`${this._baseUrl}users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: avatarUrl.description,
+        avatar: data.avatar,
       }),
     }).then((res) => {
       return this._checkApiResponse(res);
