@@ -1,10 +1,12 @@
 import React from "react";
 import { useState, useEffect, useContext } from "react";
 import PopupWithForm from "../components/PopupWithForm";
+import { AppContext } from "../contexts/AppContext";
 function AddPlacePopup(props) {
   const [name, setName] = useState("");
   const [link, setLink] = useState("");
 
+  const addAppContext = useContext(AppContext);
   function handleChangeName(e) {
     setName(e.target.value);
   }
@@ -29,11 +31,12 @@ function AddPlacePopup(props) {
   return (
     <PopupWithForm
       isOpen={props.isOpen}
-      onClose={props.onClose}
+      onClose={addAppContext.closeAllPopups}
       title="Новое место"
       id={"_add-card"}
       buttonName={"Сохранить"}
       onSubmit={handleSubmit}
+      isLoading={addAppContext.isLoading}
     >
       <input
         minLength="2"
@@ -45,7 +48,7 @@ function AddPlacePopup(props) {
         id="name-add-value"
         placeholder="Название"
         onChange={handleChangeName}
-        value={name}
+        value={name || ""}
       />
       <span className="popup__input-error name-add-value-input-error"></span>
       <input
@@ -56,7 +59,7 @@ function AddPlacePopup(props) {
         name="description"
         id="link-value"
         onChange={handleChangeLink}
-        value={link}
+        value={link || ""}
       />
       <span className="popup__input-error link-value-input-error"></span>
     </PopupWithForm>

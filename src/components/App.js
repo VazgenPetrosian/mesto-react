@@ -11,18 +11,14 @@ import api from "../utils/api.js";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
+import { AppContext } from "../contexts/AppContext";
 
 function App() {
   useEffect(() => {
     api
       .getUserData()
       .then((data) => {
-        setCurrentUser({
-          _id: data._id,
-          name: data.name,
-          about: data.about,
-          avatar: data.avatar,
-        });
+        setCurrentUser(data);
       })
       .catch((error) => {
         console.error(
@@ -146,41 +142,39 @@ function App() {
     setSelectedCard({});
   }
   return (
-    <CurrentUserContext.Provider value={currentUser}>
-      <div className="App">
-        <div className="pages">
-          <Header />
-          <Main
-            onEditProfile={handleEditProfileClick}
-            onAddPlace={handleAddPlaceClick}
-            onEditAvatar={handleEditAvatarClick}
-            onCardClick={handleCardClick}
-            cards={cards}
-            onCardLike={handleCardLike}
-            onCardDelete={handleDeleteCard}
-          />
-          <Footer />
-          <EditProfilePopup
-            isOpen={isEditProfilePopupOpen}
-            onClose={closeAllPopups}
-            onUpdateUser={handleUpdateUser}
-            isLoading={isLoading}
-          ></EditProfilePopup>
-          <AddPlacePopup
-            isOpen={isAddPlacePopupOpen}
-            onClose={closeAllPopups}
-            onAddPlace={handleAddPlaceSubmit}
-            isLoading={isLoading}
-          ></AddPlacePopup>
-          <ImagePopup card={selectedCard} onClose={closeAllPopups} />
-          <EditAvatarPopup
-            isOpen={isEditAvatarPopupOpen}
-            onClose={closeAllPopups}
-            onUpdateAvatar={handleAvatarUpdate}
-          ></EditAvatarPopup>
+    <AppContext.Provider value={{ isLoading, closeAllPopups }}>
+      <CurrentUserContext.Provider value={currentUser}>
+        <div className="App">
+          <div className="pages">
+            <Header />
+            <Main
+              onEditProfile={handleEditProfileClick}
+              onAddPlace={handleAddPlaceClick}
+              onEditAvatar={handleEditAvatarClick}
+              onCardClick={handleCardClick}
+              cards={cards}
+              onCardLike={handleCardLike}
+              onCardDelete={handleDeleteCard}
+            />
+            <Footer />
+            <EditProfilePopup
+              isOpen={isEditProfilePopupOpen}
+              onUpdateUser={handleUpdateUser}
+            />
+            <AddPlacePopup
+              isOpen={isAddPlacePopupOpen}
+              onAddPlace={handleAddPlaceSubmit}
+            />
+            <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+            <EditAvatarPopup
+              isOpen={isEditAvatarPopupOpen}
+              onClose={closeAllPopups}
+              onUpdateAvatar={handleAvatarUpdate}
+            />
+          </div>
         </div>
-      </div>
-    </CurrentUserContext.Provider>
+      </CurrentUserContext.Provider>
+    </AppContext.Provider>
   );
 }
 

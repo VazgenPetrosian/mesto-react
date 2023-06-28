@@ -1,5 +1,6 @@
 import React from "react";
 import closeButton from "../images/close-icon-320px.svg";
+import { usePopupClose } from "./hooks/usePopupClose";
 
 function PopupWithForm({
   isOpen,
@@ -11,6 +12,7 @@ function PopupWithForm({
   id,
   onSubmit,
 }) {
+  usePopupClose(isOpen, onClose);
   return (
     <div className={`popup ${isOpen ? "popup_opened" : ""}`} id={id}>
       <div className="popup__container">

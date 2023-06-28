@@ -76,7 +76,9 @@ class Api {
 
   getInitialCards() {
     return fetch(`${this._baseUrl}cards`, { headers: this._headers }).then(
-      (res) => res.json()
+      (res) => {
+        return this._checkApiResponse(res);
+      }
     );
   }
   //методы с картами

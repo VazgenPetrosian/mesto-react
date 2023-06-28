@@ -1,7 +1,9 @@
 import React from "react";
 import closeButton from "../images/close-icon-320px.svg";
+import { usePopupClose } from "./hooks/usePopupClose";
 
 function ImagePopup(props) {
+  usePopupClose(props.card?.link, props.onClose);
   return (
     <div
       className={`popup popup_type_zoom ${
